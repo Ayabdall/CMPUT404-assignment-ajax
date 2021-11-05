@@ -22,7 +22,7 @@
 
 
 import flask
-from flask import Flask, request, redirect, url_for
+from flask import Flask, request, redirect, url_for, render_template
 import json
 app = Flask(__name__)
 app.debug = True
@@ -73,8 +73,7 @@ def flask_post_json():
 
 @app.route("/")
 def hello():
-    index_url = url_for('static', filename='index.html')
-    return redirect(index_url)
+    return render_template("index.html")
 
 @app.route("/entity/<entity>", methods=['POST','PUT'])
 def update(entity):
